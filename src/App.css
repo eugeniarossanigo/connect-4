@@ -1,3 +1,49 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+}
+h1 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+.board {
+  background-color: lightgray;
+  width: 300px;
+  height: 300px;
+  font-size: 3rem;
+  display: grid;
+  grid-template: repeat(4, 25%) / repeat(4, 25%);
+  border: 1rem solid lightgray;
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+}
+.turns {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.turns div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: .5rem;
+  font-size: 3rem;
+}
+.turns div:hover {
+  transform: scale(110%);
+  background-color: rgb(47, 50, 56);
+}
+.board div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
