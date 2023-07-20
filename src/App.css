@@ -19,6 +19,17 @@ h1 {
   border-radius: 2rem;
   margin-bottom: 2rem;
 }
+.board div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.board div span{
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  box-shadow: 2px 2px 1px rgb(97, 96, 96);
+}
 .turns {
   display: flex;
   justify-content: space-evenly;
@@ -31,18 +42,25 @@ h1 {
   width: 60px;
   height: 60px;
   border-radius: .5rem;
-  font-size: 3rem;
 }
-.turns div:hover {
+.turns div span{
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+.turns div.is-selected {
   transform: scale(110%);
   background-color: rgb(47, 50, 56);
 }
-.board div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+span.black {
+  background-color: rgb(22, 24, 28);
 }
-
+span.red {
+  background-color: red;
+}
+span.green {
+  background-color: green;
+}
 
 /* #root {
   max-width: 1280px;
