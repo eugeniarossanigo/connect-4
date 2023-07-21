@@ -4,8 +4,8 @@ import { TURNS } from './constants'
 import { checkWinner, checkGame } from './logic/board'
 
 function App() {
-  const [board, setBoard] = useState(Array(16).fill('black'))
-  //const [board, setBoard] = useState(Array(4).fill(Array(4).fill('black')))
+  // const [board, setBoard] = useState(Array(16).fill('black'))
+  const [board, setBoard] = useState(Array(4).fill(Array(4).fill('black')))
   const [turn, setTurn] = useState(TURNS.red)
   const [winner, setWinner] = useState(null)
 
@@ -14,30 +14,30 @@ function App() {
   }
 
   const updateBoard = (array, indexArray, indexItem) => {
-    if (board[index] !== 'black' || winner) return
-    const newBoard = [...board]
-    newBoard[index] = turn
-    setBoard(newBoard)
-    const newTurn = turn === TURNS.red ? TURNS.green : TURNS.red
-    setTurn(newTurn)
-
-    const newWinner = checkWinner(newBoard, board)
-    if (newWinner) {
-      console.log("ganó " + turn)
-      setWinner(newWinner)
-    } else if (checkGame(newBoard)) {
-      setWinner(false)
-    }
-
-    // if (array[indexItem] !== 'black' || winner) return
+    // if (board[index] !== 'black' || winner) return
     // const newBoard = [...board]
-    // const newArray = [...array]
-    // newArray[indexItem] = turn
-    // newBoard[indexArray] = newArray
-    // console.log(newBoard)
+    // newBoard[index] = turn
     // setBoard(newBoard)
     // const newTurn = turn === TURNS.red ? TURNS.green : TURNS.red
     // setTurn(newTurn)
+
+    // const newWinner = checkWinner(newBoard, board)
+    // if (newWinner) {
+    //   console.log("ganó " + turn)
+    //   setWinner(newWinner)
+    // } else if (checkGame(newBoard)) {
+    //   setWinner(false)
+    // }
+
+    if (array[indexItem] !== 'black' || winner) return
+    const newBoard = [...board]
+    const newArray = [...array]
+    newArray[indexItem] = turn
+    newBoard[indexArray] = newArray
+    console.log(newBoard)
+    setBoard(newBoard)
+    const newTurn = turn === TURNS.red ? TURNS.green : TURNS.red
+    setTurn(newTurn)
 
   }
 
@@ -45,21 +45,21 @@ function App() {
     <main className='main'>
       <h1>4 IN A ROW</h1>
       <section className='board'>
-        {/* {board.map((array, index) => array.map((_, i) => {
+        {board.map((array, index) => array.map((_, i) => {
           return (
             <div key={i} onClick={() => handleClick(array, index, i)}>
                 <span className={array[i]}></span>
             </div>
           )
-         }))} */}
+         }))}
         
-        {board.map((_, index) => {
+        {/* {board.map((_, index) => {
           return (
             <div key={index} onClick={() => handleClick(index)}>
                 <span className={board[index]}></span>
             </div>
           )
-        })}
+        })} */}
       </section>
       <section className='turns'>
         <div className={`${turn === TURNS.red && 'is-selected'}`}>
