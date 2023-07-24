@@ -23,35 +23,49 @@ function App() {
 
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
-      console.log("ganó " + turn)
-      
       setWinner(newWinner)
     } else if (checkGame(newBoard)) {
       setWinner(false)
     }
   }
 
+  const resetGame = () => {
+    setBoard(Array(49).fill('black'))
+    setWinner(null)
+    setTurn(TURNS.red)
+  }
+
   return (
     <main className='main'>
-      <h1>4 IN A ROW</h1>
+      {/* <h1>CONNECT4</h1> */}
       <section className='board'>        
         {board.map((_, index) => {
           return (
             <div key={index} onClick={() => handleClick(index)}>
-                {/* <span className={`${winner ? 'winner-green' : board[index]}`}></span> */}
                 <span className={board[index]}></span>
             </div>
           )
         })}
       </section>
-      <section className='turns'>
-        <div className={`${turn === TURNS.red && 'is-selected'}`}>
-          <span className={TURNS.red}></span>
-        </div>
-        <div className={`${turn === TURNS.yellow && 'is-selected'}`}>
-          <span className={TURNS.yellow}></span>
-        </div>
-      </section>
+      { winner ?
+          <section className='winner'>
+            <div className='is-winner'>
+              <span className={`${winner}`}></span>
+            </div>
+            <div className='reset' onClick={resetGame}>
+              <img src={`/refresh-arrow.png`}></img>
+            </div> 
+          </section>
+          :
+          <section className='turns'>
+            <div className={`${turn === TURNS.red && 'is-selected'}`}>
+              <span className={TURNS.red}></span>
+            </div>
+            <div className={`${turn === TURNS.yellow && 'is-selected'}`}>
+              <span className={TURNS.yellow}></span>
+            </div>
+          </section>
+      }
     </main>
   )
 }
