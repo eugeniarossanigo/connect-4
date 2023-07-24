@@ -6,7 +6,7 @@ export const TURNS = {
 const DIAGONAL_COMBO = (array, start, step) => {
   let miniArray = []
   let cont = 0
-  for (let i = start; i < array.length/2; i++) {
+  for (let i = start; i < array.length/2+3; i++) {
     let arrayTest = [i, i+step, i+(step*2), i+(step*3)]
     if (arrayTest.length === 4 && arrayTest[arrayTest.length-1] < 49) {
       miniArray.push(arrayTest)
