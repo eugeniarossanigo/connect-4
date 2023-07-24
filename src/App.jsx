@@ -4,12 +4,10 @@ import { TURNS } from './constants'
 import { checkWinner, checkGame } from './logic/board'
 
 function App() {
-  // const [board, setBoard] = useState(Array(49).fill('black'))
   const [board, setBoard] = useState(() => {
     const storageBoard = window.localStorage.getItem('board')
     return storageBoard ? JSON.parse(storageBoard) : Array(49).fill('black')
   })
-  // const [turn, setTurn] = useState(TURNS.red)
   const [turn, setTurn] = useState(() => {
     const storageTurn = window.localStorage.getItem('turn')
     return storageTurn ?? TURNS.red
