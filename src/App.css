@@ -33,24 +33,6 @@
   align-items: center;
   gap: 1rem;
 }
-.winner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-.is-winner {
-  background-color: #7d9bb1;
-  padding: 1rem;
-  border-radius: 1rem;
-  display: flex;
-}
-.is-winner span {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-}
-span.color
 .turns p {
   font-size: 2rem;
 }
@@ -60,7 +42,7 @@ span.color
   align-items: center;
   width: 60px;
   height: 60px;
-  border-radius: .5rem;
+  border-radius: .7rem;
 }
 .turns div span{
   width: 2rem;
@@ -70,16 +52,6 @@ span.color
 .turns div.is-selected {
   transform: scale(110%);
   background-color: #7d9bb1;
-}
-.reset {
-  border: 2px solid #91adc2;
-  border-radius: 1rem;
-  padding: .5rem 1.5rem;
-  display: flex;
-  align-items: center;
-}
-.reset img {
-  width: 1.6rem;
 }
 span.black {
   background-color: rgb(22, 24, 28);
@@ -99,4 +71,15 @@ span.yellow {
 .board div span.winner-orange {
   background-color: orange;
   box-shadow: inset -3px -3px 1px #113147;
+}
+.reset {
+  border: 2px solid #91adc2;
+  border-radius: 1rem;
+  padding: .5rem 1.2rem;
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.reset img {
+  width: 1.4rem;
 }

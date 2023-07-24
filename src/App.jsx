@@ -49,8 +49,7 @@ function App() {
 
   return (
     <main className='main'>
-      {/* <h1>CONNECT4</h1> */}
-      <section className='board'>        
+      <section className='board'>
         {board.map((_, index) => {
           return (
             <div key={index} onClick={() => handleClick(index)}>
@@ -59,25 +58,25 @@ function App() {
           )
         })}
       </section>
-      { winner ?
-          <section className='winner'>
-            <div className='is-winner'>
-              <span className={`${winner}`}></span>
-            </div>
-            <div className='reset' onClick={resetGame}>
-              <img src={`/refresh-arrow.png`}></img>
-            </div> 
-          </section>
+      <section className='turns'>
+        { winner ?
+          <div className='is-selected'>
+            <span className={winner}></span>
+          </div>
           :
-          <section className='turns'>
+          <>
             <div className={`${turn === TURNS.red && 'is-selected'}`}>
               <span className={TURNS.red}></span>
             </div>
             <div className={`${turn === TURNS.yellow && 'is-selected'}`}>
               <span className={TURNS.yellow}></span>
             </div>
-          </section>
-      }
+          </>
+        }
+      </section>
+      <section className='reset' onClick={resetGame}>
+        <img src={`/refresh-arrow.png`}></img>
+      </section>
     </main>
   )
 }
