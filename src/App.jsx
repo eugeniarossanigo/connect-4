@@ -60,7 +60,7 @@ function App() {
       </section>
       <section className='turns'>
         { winner ?
-          <div className='is-selected'>
+          <div className='is-selected is-winner'>
             <span className={winner}></span>
           </div>
           :
