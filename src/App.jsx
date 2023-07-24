@@ -4,7 +4,7 @@ import { TURNS } from './constants'
 import { checkWinner, checkGame } from './logic/board'
 
 function App() {
-  const [board, setBoard] = useState(Array(25).fill('black'))
+  const [board, setBoard] = useState(Array(49).fill('black'))
   const [turn, setTurn] = useState(TURNS.red)
   const [winner, setWinner] = useState(null)
 
@@ -13,10 +13,8 @@ function App() {
   }
 
   const updateBoard = (index) => {
-    let x = index < 20 && board[index + 5] === 'black'
-    console.log(index)
-    console.log(index + 5)
-    if (board[index] !== 'black' || x || winner) return
+    let avoidSpaces = index < 42 && board[index + 7] === 'black'
+    if (board[index] !== 'black' || avoidSpaces || winner) return
     const newBoard = [...board]
     newBoard[index] = turn
     setBoard(newBoard)
@@ -26,6 +24,7 @@ function App() {
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
       console.log("ganó " + turn)
+      
       setWinner(newWinner)
     } else if (checkGame(newBoard)) {
       setWinner(false)
@@ -39,6 +38,7 @@ function App() {
         {board.map((_, index) => {
           return (
             <div key={index} onClick={() => handleClick(index)}>
+                {/* <span className={`${winner ? 'winner-green' : board[index]}`}></span> */}
                 <span className={board[index]}></span>
             </div>
           )
