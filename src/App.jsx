@@ -2,11 +2,16 @@ import { useState } from 'react'
 import './App.css'
 import { TURNS } from './constants'
 import { checkWinner, checkGame } from './logic/board'
+import ModalRules from './ModalRules'
+import Confetti from 'react-confetti'
 
 function App() {
+  const [open, setOpen] = useState(true)
+  const handleOpen = () => setOpen(!open)
+
   const [board, setBoard] = useState(() => {
     const storageBoard = window.localStorage.getItem('board')
-    return storageBoard ? JSON.parse(storageBoard) : Array(49).fill('black')
+    return storageBoard ? JSON.parse(storageBoard) : Array(42).fill('black')
   })
   const [turn, setTurn] = useState(() => {
     const storageTurn = window.localStorage.getItem('turn')
@@ -38,7 +43,7 @@ function App() {
   }
 
   const resetGame = () => {
-    setBoard(Array(49).fill('black'))
+    setBoard(Array(42).fill('black'))
     setWinner(null)
     setTurn(TURNS.red)
     window.localStorage.removeItem('board')
@@ -47,6 +52,7 @@ function App() {
 
   return (
     <main className='main'>
+      { open && <ModalRules handleOpen={handleOpen} /> }
       <section className='board'>
         {board.map((_, index) => {
           return (
@@ -58,9 +64,19 @@ function App() {
       </section>
       <section className='turns'>
         { winner ?
+        <>
+        <Confetti
+          className='confetti'
+          colors={winner === 'red'? ['#ff0000', '#ff4500', '#cf0107'] : ['#ffff00', '#ffe600', '#fff992']}
+          width={window.innerWidth || 300}
+          height={window.innerHeight || 200}
+          numberOfPieces={300}
+          recycle={false}
+        />
           <div className='is-selected is-winner'>
             <span className={winner}></span>
           </div>
+          </>
           :
           <>
             <div className={`${turn === TURNS.red && 'is-selected'}`}>

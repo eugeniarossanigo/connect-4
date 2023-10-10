@@ -8,7 +8,7 @@ const DIAGONAL_COMBO = (array, start, step) => {
   let cont = 0
   for (let i = start; i < array.length/2+3; i++) {
     let arrayTest = [i, i+step, i+(step*2), i+(step*3)]
-    if (arrayTest.length === 4 && arrayTest[arrayTest.length-1] < 49) {
+    if (arrayTest.length === 4 && arrayTest[arrayTest.length-1] < 42) {
       miniArray.push(arrayTest)
       cont++
       if (cont === 4) {
@@ -37,4 +37,4 @@ const WINNER_COMBOS_FUNCTION = (array) => {
   return newArray.concat(DIAGONAL_COMBO(array, 0, 8)).concat(DIAGONAL_COMBO(array, 3, 6))
 }
 
-export const WINNER_COMBOS = WINNER_COMBOS_FUNCTION([...Array(49).keys()])
+export const WINNER_COMBOS = WINNER_COMBOS_FUNCTION([...Array(42).keys()])

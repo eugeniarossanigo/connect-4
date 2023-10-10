@@ -5,7 +5,7 @@ export const checkWinner = (board) => {
     const [a, b, c, d] = combo
     if (board[a] !== 'black' && board[a] === board[b] && board[a] === board[c] && board[a] === board[d]) {
       let winner = board[a]
-      combo.map(i => board[i] = 'winner-orange')
+      combo.map(i => board[i] = 'winner-color')
       return winner
     }
   }
